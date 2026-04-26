@@ -2,66 +2,76 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Mapa Mundi - Granada</title>
+<title>Mapa - Granada (correto)</title>
 
 <style>
-    body {
-        margin: 0;
-        background: #0a1a2a;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    background: #0a1a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .mapa {
-        position: relative;
-        width: 800px;
-    }
+.mapa {
+    position: relative;
+    width: 1000px;
+}
 
-    .mapa img {
-        width: 100%;
-        display: block;
-    }
+.mapa img {
+    width: 100%;
+    display: block;
+}
 
-    /* PONTO EM GRANADA */
-    .ponto {
-        position: absolute;
-        top: 58%;   /* ajuste fino se quiser */
-        left: 36%;  /* ajuste fino se quiser */
-        width: 12px;
-        height: 12px;
-        background: red;
-        border-radius: 50%;
-        box-shadow: 0 0 10px red;
-        animation: pulse 1.5s infinite;
-    }
+.ponto {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    box-shadow: 0 0 10px red;
+    transform: translate(-50%, -50%);
+}
 
-    @keyframes pulse {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.6; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .label {
-        position: absolute;
-        top: 62%;
-        left: 36%;
-        color: white;
-        font-family: Arial;
-        font-size: 14px;
-    }
+.label {
+    position: absolute;
+    color: white;
+    font-family: Arial;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+}
 </style>
 </head>
 
 <body>
 
 <div class="mapa">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg">
-    
-    <div class="ponto"></div>
-    <div class="label"><a href="k.html">Granada</a></div>
+    <img id="mapaImg" src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg">
+
+    <div id="ponto" class="ponto"></div>
+    <div id="label" class="label"><a href="k.html"></a>Granada</div>
 </div>
+
+<script>
+// Coordenadas de Granada
+const lat = 11.98;
+const lon = -61.68;
+
+// Converter para posição no mapa (projeção simples equiretangular)
+const x = (lon + 180) * (100 / 360);
+const y = (90 - lat) * (100 / 180);
+
+// Aplicar posição
+const ponto = document.getElementById("ponto");
+const label = document.getElementById("label");
+
+ponto.style.left = x + "%";
+ponto.style.top = y + "%";
+
+label.style.left = x + "%";
+label.style.top = (y + 3) + "%";
+</script>
 
 </body>
 </html>
