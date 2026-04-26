@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mapa Mundi - Granada</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #0a1a2a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .mapa {
+        position: relative;
+        width: 800px;
+    }
+
+    .mapa img {
+        width: 100%;
+        display: block;
+    }
+
+    /* PONTO EM GRANADA */
+    .ponto {
+        position: absolute;
+        top: 58%;   /* ajuste fino se quiser */
+        left: 36%;  /* ajuste fino se quiser */
+        width: 12px;
+        height: 12px;
+        background: red;
+        border-radius: 50%;
+        box-shadow: 0 0 10px red;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.6; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .label {
+        position: absolute;
+        top: 62%;
+        left: 36%;
+        color: white;
+        font-family: Arial;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="mapa">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg">
+    
+    <div class="ponto"></div>
+    <div class="label"><a href="k.html">Granada</a></div>
+</div>
+
+</body>
+</html>
